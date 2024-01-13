@@ -199,93 +199,6 @@ public class Robot extends TimedRobot {
       if (myTimer.get() > 6.2){
         myRobot.tankDrive(0, 0); 
       }
-
-
-
-
-
-
-
-      //For Gyro Balancing Bu kod commentlemezsen emergency verir !!!!!!!!
-      //if (myTimer.get() > 5 && myTimer.get() < 7.5){
-        //myRobot.tankDrive(-1, 1);
-      //}
-      /*if (myTimer.get() > 1){
-        //myRobot.tankDrive(0, 0); 
-        rollAngleDegrees = gyro.getRoll();
-        System.out.println(rollAngleDegrees);
-
-          if ( !autoBalanceYMode && 
-          (Math.abs(rollAngleDegrees) >= 
-          Math.abs(maxDegrees))) {
-                autoBalanceYMode = true;
-          }
-          else if ( autoBalanceYMode && 
-            (Math.abs(rollAngleDegrees) <= 
-            Math.abs(maxDegrees))) {
-                autoBalanceYMode = false;
-            }
-          if ( autoBalanceYMode = true ) {
-            double rollAngleRadians = rollAngleDegrees * (Math.PI / 180.0);
-            double yAxisRate = Math.sin(rollAngleRadians) * -1;
-            myRobot.tankDrive(-yAxisRate, yAxisRate);  
-          }
-          else{
-            myRobot.tankDrive(0, 0);
-            return;
-          }
-      
-      }*/
-    } 
-    
-
-      /*if (myTimer.get() < 6.1){ 
-        myRobot.tankDrive(-1, 1);  
-      }
-      if (myTimer.get() > 6.1){
-        myRobot.tankDrive(0, 0);*/
-        //rollAngleDegrees = gyro.getRoll();
-        //System.out.println(rollAngleDegrees); 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        /* 
-        //System.out.println("timer: " + myTimer);
-        rollAngleDegrees = gyro.getRoll();
-        System.out.println(rollAngleDegrees);
-        while (maxDegrees > rollAngleDegrees){ 
-
-          if ( !autoBalanceYMode && 
-          (Math.abs(rollAngleDegrees) >= 
-          Math.abs(maxDegrees))) {
-                autoBalanceYMode = true;
-          }
-          else if ( autoBalanceYMode && 
-            (Math.abs(rollAngleDegrees) <= 
-            Math.abs(maxDegrees))) {
-                autoBalanceYMode = false;
-            }
-        if ( autoBalanceYMode = true ) {
-          double rollAngleRadians = rollAngleDegrees * (Math.PI / 180.0);
-          double yAxisRate = Math.sin(rollAngleRadians) * -1;
-          myRobot.tankDrive(-yAxisRate, yAxisRate);  
-        }
-        else{
-          myRobot.tankDrive(0, 0);
-          return;
-        }
-
-      //Timer.delay(0.05);
-      
-    }*/
    
   
 
@@ -370,137 +283,18 @@ public class Robot extends TimedRobot {
     
     
 
-/* 
-    // Actual position will be a little less than the desired
-    if(xboxController.getYButton()){
-      
-    //PROPORTIONAL
-    // subtracted 10 degrees
-    //theorethical  -98.4, given -120
-      targetPos2 = 98;
 
-      double error2 = targetPos2 - enc1Ang;
-
-
-    // INTEGRAL
-      double kI2 = 0.000001;
-      double dt2 = Timer.getFPGATimestamp() - lastTimeStamp2;
-      errorSum2 += error2 * dt2;
-    // DERIVATIVE
-      double kD2 = 0;
-      double errorRate2 = (error2- lastError1) / dt2;
-    // MOTOR OUTPUT
-    //+(Math.sin(Math.toRadians(-enc2Ang))/10)
-      double p2 = (kp2 * error2)+(kI2 * errorSum2);
-      motorJoint2.set(p2);
-      lastTimeStamp2 = Timer.getFPGATimestamp();
-      lastError2 = error2;
-      myRobot.arcadeDrive(xboxController.getLeftX()/3,xboxController.getLeftY()/3);
-
- 
-       } 
-*/
 
 
     if(xboxController.getRightBumper()){
-/*        // PROPORTIONAL
-       // Theorethical 42.9 given value 68
-       targetPos1 = 58;
-       double error1 = targetPos1 - enc1Ang;
-       // INTEGRAL
-       // kI1 is the constant for the Integral part. We will be calculating the offset in the error value continuously and increasing the motor power proportionally.
-       // 5 ile çarptım
-       double kI1 = 0.0001;
-       double dt1 = Timer.getFPGATimestamp() - lastTimeStamp1;
-       errorSum1 += error1 * dt1;
-       
-   // DERIVATIVE
-       double kD1 = 0;
-       double errorRate1 = (error1 - lastError1) / dt1;
-   // MOTOR OUTPUT
-       double p1 = ( kp1 * error1 ) + (kI1 * errorSum1);
-       //double p1 = (kp1 * error1)+(kI1 * errorSum2)+(kD1 * errorRate1);
-       motorJoint1.set(p1/1.5);
-       lastTimeStamp1 = Timer.getFPGATimestamp();
-       lastError1 = error1;
-       myRobot.arcadeDrive(xboxController.getLeftX()/3,xboxController.getLeftY()/3);
 
-*/
       motorJoint2.set(-0.28);
     } 
 
     else if (xboxController.getYButton()){
       motorJoint2.set(0);
     }
-    /* 
-    else if (xboxController.getLeftBumper()){
-      motorJoint2.set(-0.15);
-    } */
-
-
-    //Sıkıntı Buradan. Her türlü 0'a vurduruyor.
-    /* 
-    else {
-      motorJoint2.set(0);
-      //motorJoint2.set(-0.13);
-    } */
-
     
-  
-
-
-    /*if(xboxController.getBButton()){
-            
-    //PROPORTIONAL
-    //Needed -47, given -67
-      targetPos2 = -57;
-
-      double error2 = targetPos2 - enc2Ang;
-
-
-    // INTEGRAL
-      double kI2 = 0.00001;
-      double dt2 = Timer.getFPGATimestamp() - lastTimeStamp2;
-      errorSum2 += error2 * dt2;
-    // DERIVATIVE
-      double kD2 = 0;
-      double errorRate2 = (error2- lastError1) / dt2;
-    // MOTOR OUTPUT
-    //+(Math.sin(Math.toRadians(-enc2Ang))/10)
-      double p2 = (kp2 * error2)+(kI2 * errorSum2);
-      motorJoint2.set(p2/2.5);
-      lastTimeStamp2 = Timer.getFPGATimestamp();
-      lastError2 = error2;
-      myRobot.arcadeDrive(xboxController.getLeftX()/3,xboxController.getLeftY()/3);
-
-      
-    }
-    if(xboxController.getStartButton()){
-       // PROPORTIONAL
-
-       // Theorethical 55, given value 70
-       targetPos1 = 70;
-       double error1 = targetPos1 - enc1Ang;
-       // INTEGRAL
-       // kI1 is the constant for the Integral part. We will be calculating the offset in the error value continuously and increasing the motor power proportionally.
-       // 5 ile çarptım
-       double kI1 = 0.0001;
-       double dt1 = Timer.getFPGATimestamp() - lastTimeStamp1;
-       errorSum1 += error1 * dt1;
-       
-   // DERIVATIVE
-       double kD1 = 0;
-       double errorRate1 = (error1 - lastError1) / dt1;
-   // MOTOR OUTPUT
-       double p1 = ( kp1 * error1 ) + (kI1 * errorSum1);
-       //double p1 = (kp1 * error1)+(kI1 * errorSum2)+(kD1 * errorRate1);
-       motorJoint1.set(p1/1.5);
-       lastTimeStamp1 = Timer.getFPGATimestamp();
-       lastError1 = error1;
-       myRobot.arcadeDrive(xboxController.getLeftX()/3,xboxController.getLeftY()/3);
-
-
-    }*/
 
     if(xboxController.getStartButton()){
 
@@ -513,29 +307,7 @@ public class Robot extends TimedRobot {
     }
     */
     if(xboxController.getBackButton()){
-         /* 
-    //PROPORTIONAL
-      targetPos2 = 0;
-
-      double error2 = targetPos2 - enc2Ang;
-
-
-    // INTEGRAL
-      double kI2 = 0.00001;
-      double dt2 = Timer.getFPGATimestamp() - lastTimeStamp2;
-      errorSum2 += error2 * dt2;
-    // DERIVATIVE
-      double kD2 = 0;
-      double errorRate2 = (error2- lastError1) / dt2;
-    // MOTOR OUTPUT
-    //+(Math.sin(Math.toRadians(-enc2Ang))/10)
-      double p2 = (kp2 * error2)+(kI2 * errorSum2);
-      motorJoint2.set(p2/2.5);
-      motorJoint2.setVoltage(kp2Manual)-;
-      lastTimeStamp2 = Timer.getFPGATimestamp();
-      lastError2 = error2;
-      myRobot.arcadeDrive(xboxController.getLeftX()/3,xboxController.getLeftY()/3);
-*/
+         
       motorJoint2.set(-0.40);
       
     }
